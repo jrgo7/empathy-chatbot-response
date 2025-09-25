@@ -1,17 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./index.js"></script>
+    <title>Emio</title>
 </head>
-<body>
-    {% for chat_message in chat_messages: %}
-        <p>{{ chat_message }}</p>
-    {% endfor %}
-    <form method="POST">
-        <input type="text" name="user_input" placeholder="Type something...">
-        <button type="submit">Submit</button>
-    </form>
+
+<body class="flex flex-col bg-blue-100 items-center justify-center">
+
+    <div class="flex mt-10 flex-col max-w-lg w-4/6 min-h-60 bg-white rounded-xl border border-black">
+        {% for chat_message in chat_messages: %}
+        <div class ="p-1">
+
+            <p>{{ chat_message }}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="flex mt-5 p-3 w-4/6 max-w-lg  min-h-10 bg-white rounded-xl border border-black">
+        <form method="POST" class="flex w-full items-center justify-between">
+            <input type="text" name="user_input" placeholder="Send message..." class="flex-1 mr-4">
+            <button type="submit" id="send-button">
+                <b>Send</b>
+            </button>
+        </form>
+    </div>
 </body>
+
 </html>
+
+
