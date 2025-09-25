@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from chatbot import EmpathicChatBot
 
 chat_messages = []
 
@@ -8,12 +9,12 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
         user_input = request.form["user_input"]
-        chat_messages.append(user_input)
-        """
-        Do stuff with `user_input` e.g. generate a response.
-        """
-        response = "AI: Womp womp"
-        chat_messages.append(response)
+        chat_messages.append(f"Me: {user_input}")
+
+        chatbot = EmpathicChatBot()
+        
+        response = chatbot.get_response(user_input)
+        chat_messages.append(f"{chatbot.name}: {response}")
 
     return render_template("index.html", chat_messages=chat_messages)
 
