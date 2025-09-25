@@ -5,13 +5,14 @@ chat_messages = []
 
 app = Flask(__name__)
 
+chatbot = EmpathicChatBot()
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         user_input = request.form["user_input"]
         chat_messages.append(f"Me: {user_input}")
 
-        chatbot = EmpathicChatBot()
         
         response = chatbot.get_response(user_input)
         chat_messages.append(f"{chatbot.name}: {response}")
