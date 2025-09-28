@@ -47,7 +47,7 @@
         chatBox = document.getElementById("chat-box");
         messageTemplate = document.getElementById("chat-message-template");
         newMessage = messageTemplate.content.cloneNode(true);
-        newMessage.querySelector(".chat-message").innerText = document.getElementById("user-input").value;
+        newMessage.querySelector(".chat-message").innerText = "Me: " + document.getElementById("user-input").value;
         chatBox.appendChild(newMessage);
 
         // Update button state, then submit the form
